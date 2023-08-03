@@ -113,6 +113,15 @@ body {
 
 
   #history {
-margin-left: 100px;
-    
+    margin-left: 100px;
+    background-color: cadetblue;
+    width: 150px;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 12px 16px 7px black;
+
+  }
+
+  #historiatext {
+    text-align: center;
   }
