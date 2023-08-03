@@ -1,12 +1,106 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
-  </body>
+<html lang="en">
+<head>
+  <title>Calculator</title>
+  <link href="styles.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <div id="allbuttons">
+    <div>
+      <input type="text" id="display" disabled /><br />
+      <button onclick="updateDisplay(1)">1</button>
+      <button onclick="updateDisplay(2)">2</button>
+      <button onclick="updateDisplay(3)">3</button>
+      <button id="deleteallcharecter" onclick="deleteAllCharacters()">⟪</button>
+      <br/>
+      <button onclick="updateDisplay(4)">4</button>
+      <button onclick="updateDisplay(5)">5</button>
+      <button id="kuusi" onclick="updateDisplay(6)">6</button>
+      <button id="root" onclick="calculateRoot()">√</button> 
+      <br />
+      <button onclick="updateDisplay(7)">7</button>
+      <button onclick="updateDisplay(8)">8</button>
+      <button onclick="updateDisplay(9)">9</button>
+      <button id="piste" onclick="updateDisplay('.')">.</button>
+      <br />
+      <button onclick="updateDisplay(0)">0</button>
+      <button onclick="updateDisplay('+')">+</button>
+      <button id="miinus" onclick="updateDisplay('-')">-</button>
+      <button id="updatePercentage" onclick="updatePercentage()">%</button>
+      <br />
+      <button id="multiplecation" onclick="updateDisplay('*')">*</button>
+      <button id="divide" onclick="updateDisplay('/')">/</button>
+      <button id="sameAs" onclick="calculate()">=</button>
+      <button id="erase" onclick="deleteCharacter()">␡</button>
+      <br />
+      <br />
+    </div>
+  </div>
+
+  <!-- Add the history display div -->
+  <div id="history">
+    <h3>History:</h3>
+    <ul id="history-list"></ul>
+  </div>
+
+  <script>
+    let display = document.getElementById("display");
+    let history = []; // Array to store history
+
+    function deleteCharacter() {
+      display.value = display.value.slice(0, -1);
+    }
+
+    function deleteAllCharacters() {
+      display.value = "";
+    }
+
+    function updateDisplay(val) {
+      var currentVal = display.value;
+      var lastChar = currentVal.charAt(currentVal.length - 1);
+      if (val === '.' && lastChar === '.') {
+        return;
+      }
+      display.value += val;
+    }
+
+    function calculate() {
+      try {
+        const result = eval(display.value);
+        const expression = display.value;
+        display.value = result;
+        addToHistory(`${expression} = ${result}`);
+      } catch (error) {
+        display.value = 'Error';
+      }
+    }
+
+    function calculateRoot() {
+      var value = parseFloat(display.value);
+      var result = Math.sqrt(value);
+      display.value = result;
+      addToHistory(`√(${value}) = ${result}`);
+    }
+
+    function updatePercentage() {
+      var currentValue = parseFloat(display.value);
+      var newValue = currentValue / 100;
+      display.value = newValue;
+      addToHistory(`${currentValue}% = ${newValue}`);
+    }
+
+    function addToHistory(calculation) {
+      history.push(calculation);
+      updateHistoryDisplay();
+    }
+
+    function updateHistoryDisplay() {
+      const historyList = document.getElementById('history-list');
+      historyList.innerHTML = history.map(calc => `<li>${calc}</li>`).join('');
+    }
+
+  </script>
+</body>
 </html>
