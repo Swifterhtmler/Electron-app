@@ -19,5 +19,5 @@ const variable = 5
 
 console.table("100% passed test 2")
 
-const numberi = 12;
+const numberi = true;
 const trueornot = numberi ? console.log("this  works right") : console.log("right");
