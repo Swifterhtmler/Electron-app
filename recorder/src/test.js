@@ -17,4 +17,4 @@ const variable = 5
   
   }
 
-console.log("error 200")
+console.table("100% passed test 2")
