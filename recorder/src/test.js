@@ -4,6 +4,9 @@ const constant = 12
 
 const variable = 5
 
+const variable2 = 14
+
+
 
   if (constant >= variable) {
     console.table("50% passed");
