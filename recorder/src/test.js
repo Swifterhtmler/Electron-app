@@ -24,3 +24,5 @@ console.table("100% passed test 2")
 
 const numberi = true;
 const trueornot = numberi ? console.log("this  works right") : console.log("right");
+
+console.log("Right");
