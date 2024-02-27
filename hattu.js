@@ -15,7 +15,7 @@ newWord()
 
 */
 
-
+/*
 
 
 function stringGen(len) {
@@ -37,5 +37,7 @@ function stringGen(len) {
 for (let i = 0; i < 1000; i++) {
    console.log(stringGen(10))
 }
+*/
+
 */
 

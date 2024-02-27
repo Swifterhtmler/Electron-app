@@ -7,6 +7,7 @@ if (zeros === "0") {
 numberOfZeros++;
 } 
 } 
+
 console.log(numberOfZeros)
 } else {
 console.log("there arent any zeros")
