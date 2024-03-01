@@ -7,6 +7,7 @@ const variable = 5
 const variable2 = 14
 
 
+const variable3 = 24;
 
   if (constant >= variable) {
     console.table("50% passed");
